@@ -22,7 +22,7 @@ backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
 backend.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin: https://prowork.live'); // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Origin: *'); // Allow requests from any origin
   res.setHeader('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE'); // Allow specific HTTP methods
   res.setHeader('Access-Control-Allow-Headers: Content-Type, Authorization'); // Allow specific headers
   next();
