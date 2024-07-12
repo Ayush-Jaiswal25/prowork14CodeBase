@@ -17,25 +17,17 @@ let updatedDetails;
 let User, UserInfo, UserSignupObjectID;
 
 
-// backend.use(cors())
-backend.use(cors({credentials: true, origin: 'https://prowork.live' }));
-backend.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://prowork.live'); 
-  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  // res.header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS'); // Allow specific HTTP methods
-  // res.header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Authorization, application/json,  Accept'); // Allow specific headers
-  next();
-});
+backend.use(cors())
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
-// backend.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin: *'); // Allow requests from any origin
-//   res.header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE'); // Allow specific HTTP methods
-//   res.header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Authorization, application/json,  Accept'); // Allow specific headers
-//   next();
-// });
-// console.log("HEY DONE");
+backend.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin: *'); // Allow requests from any origin
+  res.header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE'); // Allow specific HTTP methods
+  res.header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Authorization, application/json,  Accept'); // Allow specific headers
+  res.header('HTTP 1.1 200 OK');
+  next();
+});
 
 
 
