@@ -80,8 +80,8 @@ backend.get("/prowork/Founder", async (req, res) =>{
 
 
 backend.post("/prowork/signup", async (req, res) =>{
-    res.header('Access-Control-Allow-Origin', '*');
-    // res.header("HTTP 1.1 200 Ok");
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set("HTTP 1.1 200 Ok");
     User = await UserSignup.find({PhoneNumber: req.body.PhoneNumber});
 
     if(User[0] == undefined){
