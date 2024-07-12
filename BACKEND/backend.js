@@ -21,13 +21,14 @@ backend.use(cors())
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
-backend.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin: *'); // Allow requests from any origin
-  res.header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE'); // Allow specific HTTP methods
-  res.header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Authorization, application/json,  Accept'); // Allow specific headers
-  res.header('HTTP 1.1 200 OK');
-  next();
-});
+function setCorsHeaders(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+    console.log("hhdhdhdh");
+}
+backend.use(setCorsHeaders);
 
 
 
