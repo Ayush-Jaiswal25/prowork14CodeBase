@@ -18,7 +18,12 @@ let User, UserInfo, UserSignupObjectID;
 
 
 // backend.use(cors())
-backend.use(cors({origin: 'https://prowork.live' }));
+// backend.use(cors({origin: 'https://prowork.live' }));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); 
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
