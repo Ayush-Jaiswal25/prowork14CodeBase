@@ -17,7 +17,7 @@ let updatedDetails;
 let User, UserInfo, UserSignupObjectID;
 
 
-// backend.use(cors())
+backend.use(cors())
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
