@@ -17,18 +17,18 @@ let updatedDetails;
 let User, UserInfo, UserSignupObjectID;
 
 
-backend.use(cors())
+// backend.use(cors())
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
-function setCorsHeaders(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-    console.log("hhdhdhdh");
-}
-backend.use(setCorsHeaders);
+// function setCorsHeaders(req, res, next) {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     next();
+//     console.log("hhdhdhdh");
+// }
+// backend.use(setCorsHeaders);
 
 
 
@@ -80,6 +80,7 @@ backend.get("/prowork/Founder", async (req, res) =>{
 
 
 backend.post("/prowork/signup", async (req, res) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     User = await UserSignup.find({PhoneNumber: req.body.PhoneNumber});
 
     if(User[0] == undefined){
