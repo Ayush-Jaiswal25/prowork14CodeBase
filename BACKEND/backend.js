@@ -17,10 +17,8 @@ let updatedDetails;
 let User, UserInfo, UserSignupObjectID;
 
 
-backend.use(cors())
-// backend.use(cors({
-//     origin: 'https://prowork.live' 
-// }));
+// backend.use(cors())
+backend.use(cors({origin: 'https://prowork.live' }));
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
