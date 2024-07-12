@@ -22,11 +22,12 @@ backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
 backend.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin: *'); // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Origin:', '*'); // Allow requests from any origin
   res.setHeader('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE'); // Allow specific HTTP methods
   res.setHeader('Access-Control-Allow-Headers: Content-Type, Authorization'); // Allow specific headers
   next();
 });
+console.log("HEY DONE");
 
 const razorpay = new Razorpay( { key_id: 'rzp_test_YlsIMKyGXhS3ih', key_secret: 'IJM0eHFmjmdOLpxaT3e1S7Vi' } );
 main()
@@ -42,7 +43,7 @@ async function main(){
 }
 
 
-backend.listen(8080, () =>{ console.log("The server is running on Port number 3000") });
+backend.listen(3000, () =>{ console.log("The server is running on Port number 3000") });
 
 backend.post("/payment/checkout", async (req, res) =>{
     const {name, amount} = req.body;
