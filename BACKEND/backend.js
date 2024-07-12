@@ -18,12 +18,14 @@ let User, UserInfo, UserSignupObjectID;
 
 
 // backend.use(cors())
-// backend.use(cors({origin: 'https://prowork.live' }));
-// backend.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*'); 
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   next();
-// });
+backend.use(cors({credentials: true, origin: 'https://prowork.live' }));
+backend.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); 
+  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS'); // Allow specific HTTP methods
+  res.header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Authorization, application/json,  Accept'); // Allow specific headers
+  next();
+});
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
