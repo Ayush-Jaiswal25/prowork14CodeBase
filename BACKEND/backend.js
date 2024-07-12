@@ -4,7 +4,7 @@ import cors from 'cors'
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import mongoose from 'mongoose';
-
+const port = process.env.PORT || 3000;
 import UserSignup from './models/SignUpSchema.js'
 import UserDetails from './models/userDetailSchema.js'
 import WhatsAppNumber from './models/whatsAppSchema.js'
@@ -51,7 +51,7 @@ async function main(){
 }
 
 
-backend.listen(3000, () =>{ console.log("The server is running on Port number 3000") });
+backend.listen(port, () =>{ console.log("The server is running on Port number 3000") });
 
 backend.post("/payment/checkout", async (req, res) =>{
     const {name, amount} = req.body;
