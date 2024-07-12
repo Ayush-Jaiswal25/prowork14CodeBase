@@ -17,20 +17,20 @@ let updatedDetails;
 let User, UserInfo, UserSignupObjectID;
 
 
-// backend.use(cors())
+backend.use(cors())
 backend.use(cors({
     origin: 'https://prowork.live' 
 }));
 backend.use(express.json());
 backend.use(express.urlencoded({extended: true}))
 
-// backend.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin: *'); // Allow requests from any origin
-//   res.header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE'); // Allow specific HTTP methods
-//   res.header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept'); // Allow specific headers
-//   next();
-// });
-// console.log("HEY DONE");
+backend.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin: *'); // Allow requests from any origin
+  res.header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE'); // Allow specific HTTP methods
+  res.header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept'); // Allow specific headers
+  next();
+});
+console.log("HEY DONE");
 
 
 
