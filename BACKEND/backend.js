@@ -109,6 +109,10 @@ if(User[0] == undefined){
 }
 })
 
+backend.get("/", async (req, res) =>{
+  res.send("HEYYYY");
+  console.log("KKKKK");
+})
 backend.post("/prowork/userdetails",async (req, res) =>{
     const newNumber = new UserDetails({...req.body.data, UserSignupObjectID });
     updatedDetails = await newNumber.save();
