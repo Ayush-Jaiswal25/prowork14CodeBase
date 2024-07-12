@@ -81,7 +81,10 @@ backend.get("/prowork/Founder", async (req, res) =>{
 
 backend.post("/prowork/signup", async (req, res) =>{
     res.set('Access-Control-Allow-Origin', '*');
-    res.set("HTTP 1.1 200 Ok");
+    // res.set("HTTP 1.1 200 Ok");
+     // res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     User = await UserSignup.find({PhoneNumber: req.body.PhoneNumber});
 
     if(User[0] == undefined){
@@ -107,8 +110,8 @@ if(User[0] == undefined){
 })
 
 backend.get("/tax", async (req, res) =>{
-  res.send("HEYYYY");
-  console.log("KKKKKZZZZZZZZZZ");
+  // res.send("HEYYYY");
+  // console.log("KKKKKZZZZZZZZZZ");
 })
 backend.post("/prowork/userdetails",async (req, res) =>{
     const newNumber = new UserDetails({...req.body.data, UserSignupObjectID });
