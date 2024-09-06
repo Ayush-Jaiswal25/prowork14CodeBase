@@ -1,18 +1,21 @@
+import 'dotenv/config'
 import express from 'express'
-const backend = express();
 import cors from 'cors'
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import mongoose from 'mongoose';
-const port = process.env.PORT || 3000;
-import UserSignup from './models/SignUpSchema.js'
-import UserDetails from './models/userDetailSchema.js'
-import WhatsAppNumber from './models/whatsAppSchema.js'
-import PaymentDetails from './models/paymentSchema.js';
-import Admin from './models/AdminSchema.js';
 
-const mongo_URL = "mongodb://127.0.0.1:27017/prowork";
-const u = process.env.MONGO_ATLAS_URL_CLOUD;
+import Admin from './models/AdminSchema.js';
+import BankDetails from './models/BankDetailSchema.js';
+import BookingDetails from './models/BookingDetailSchema.js';
+import PaymentDetails from './models/PaymentDetailSchema.js';
+import Registration from './models/RegistrationSchema.js'
+import Signup from './models/SignUpSchema.js'
+import UserDetails from './models/UserDetailSchema.js'
+
+const backend = express();
+const Port = process.env.PORT || 3000;
+const MongoProductionURL = process.env.MONGO_ATLAS_PRODUCTION_URL;
 let updatedDetails;
 let User, UserInfo, UserSignupObjectID;
 
@@ -33,17 +36,8 @@ backend.use(express.urlencoded({extended: true}))
 
 
 const razorpay = new Razorpay( { key_id: 'rzp_test_YlsIMKyGXhS3ih', key_secret: 'IJM0eHFmjmdOLpxaT3e1S7Vi' } );
-main()
-.then(() =>{
-    console.log("connection successful");
-})
-.catch((err) =>{
-    console.log(err);
-});
-
-async function main(){
-    await mongoose.connect(mongo_URL);
-}
+main().then(() =>{ console.log("Connection from Database established Successfully") }).catch((err) =>{ console.log(err) })
+async function main(){ await mongoose.connect(MongoProductionURL) }
 
 
 backend.listen(port, () =>{ console.log("The server is running on Port number 3000") });
